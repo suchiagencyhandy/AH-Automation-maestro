@@ -1,0 +1,61 @@
+url: https://testing.agencyhandy.com/
+---
+- launchApp
+- launchApp:
+    clearState: true
+
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: Login.yaml
+- tapOn: "Services"
+
+- doubleTapOn:
+    point: 88%,13%
+- tapOn:
+    point: 33%,41%
+- doubleTapOn:
+    id: "service-name"
+- inputText: "Service-${Date.now()}"
+
+# - tapOn: Click to upload
+# - inputText:
+#     text: "assets/test-image.jpg"
+- scrollUntilVisible:
+    element:
+      text: "Service Description*"
+- doubleTapOn:
+    point: 33%,61%
+- inputText: "test"
+- scrollUntilVisible:
+    element:
+      text: "Currency"
+- doubleTapOn:
+    point: 65%,65%
+- tapOn: "US Dollar ($)"
+- tapOn: + New Package
+- tapOn:
+    id: "packageName"
+- inputText: "Basic"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+
+- tapOn: + Add
+- inputText: "new included"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+# - scrollUntilVisible:
+#     element:
+#       text: "Amount"
+- tapOn: "0"
+- inputText: "100"
+- tapOn: Save
+- tapOn:
+    text: Create Service
+    index: 1
+- scrollUntilVisible:
+    element:
+      text: "Skip"
+- tapOn: Skip
