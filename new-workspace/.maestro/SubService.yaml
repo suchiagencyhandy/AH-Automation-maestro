@@ -9,11 +9,11 @@ url: https://testing.agencyhandy.com/
       visible: "Sign In"
     file: Login.yaml
 - tapOn: "Services"
-- doubleTapOn:
-    point: 88%,13%
-- tapOn: Subscription Service
 - tapOn:
-    point: 33%,41%
+    id: CREATE_NEW_SERVICE
+    index: 1
+- tapOn: Subscription Service
+- tapOn: Service Details
 - doubleTapOn:
     id: "service-name"
 - inputText: "Service-${Date.now()}"
@@ -23,11 +23,22 @@ url: https://testing.agencyhandy.com/
 - doubleTapOn:
     point: 33%,61%
 - inputText: "test"
-- scrollUntilVisible:
-    element:
-      text: "Currency"
-- doubleTapOn:
-    point: 65%,65%
+#Tax
+- swipe:
+    from:
+      text: + Tax Rates
+    direction: UP
+- tapOn:
+    id: Open
+- tapOn: "Home"
+#Exclusive vat
+- tapOn: inclusive
+
+
+
+- tapOn:
+    id: Open
+    index: 1
 - tapOn: "US Dollar ($)"
 - scrollUntilVisible:
     element:
@@ -53,7 +64,7 @@ url: https://testing.agencyhandy.com/
     end: 80%,30%
 - tapOn: + Setup Fee
 - tapOn: "0"
-- inputText: "20"
+- inputText: "3"
 - tapOn: "0"
 - inputText: "2"
 - tapOn: Save

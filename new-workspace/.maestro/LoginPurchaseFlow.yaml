@@ -1,0 +1,30 @@
+url: https://testing.agencyhandy.com/
+---
+- launchApp
+- launchApp:
+    clearState: true
+
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: ClientLogin.yaml
+- tapOn:
+    id: image-carousel
+    index: 1
+- tapOn: Purchase Now
+- tapOn: Purchase Now
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: Continue
+- tapOn: Bank Payment
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: Pay Now

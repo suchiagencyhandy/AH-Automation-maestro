@@ -1,0 +1,10 @@
+url: https://testing.agencyhandy.com/
+---
+- launchApp
+- tapOn: Enter Your Email
+- inputText: "suchi.sheba@gmail.com"
+- tapOn: Enter Your Password
+- inputText: "Admin@1234"
+- longPressOn:
+    id: login-submit
+

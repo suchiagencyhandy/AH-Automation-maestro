@@ -9,11 +9,10 @@ url: https://testing.agencyhandy.com/
       visible: "Sign In"
     file: Login.yaml
 - tapOn: "Services"
-
-- doubleTapOn:
-    point: 88%,13%
 - tapOn:
-    point: 33%,41%
+    id: CREATE_NEW_SERVICE
+    index: 1
+- tapOn: Service Details
 - doubleTapOn:
     id: "service-name"
 - inputText: "Service-${Date.now()}"
@@ -27,12 +26,26 @@ url: https://testing.agencyhandy.com/
 - doubleTapOn:
     point: 33%,61%
 - inputText: "test"
+#Tax
+- swipe:
+    from:
+      text: + Tax Rates
+    direction: UP
+- tapOn:
+    id: Open
+- tapOn: "Home"
+#Exclusive vat
+- tapOn: inclusive
+#currency
+- tapOn:
+    id: Open
+    index: 1
+- tapOn: "US Dollar ($)"
+
+#package create
 - scrollUntilVisible:
     element:
-      text: "Currency"
-- doubleTapOn:
-    point: 65%,65%
-- tapOn: "US Dollar ($)"
+      text: "Package Details *"
 - tapOn: + New Package
 - tapOn:
     id: "packageName"
@@ -52,6 +65,16 @@ url: https://testing.agencyhandy.com/
 - tapOn: "0"
 - inputText: "100"
 - tapOn: Save
+
+#Portfolio
+- tapOn: Additional Information
+- tapOn:
+    id: Open
+- tapOn: "Padma Bridge"
+
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
 - tapOn:
     text: Create Service
     index: 1
@@ -59,3 +82,54 @@ url: https://testing.agencyhandy.com/
     element:
       text: "Skip"
 - tapOn: Skip
+
+#edit service
+
+- tapOn: Edit
+- tapOn: Package Details
+- tapOn: Basic
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+
+- tapOn:
+    id: toggle-defaultTask
+- tapOn:
+    id: task-name-input
+    index: 1
+- inputText: "Task One"
+
+- doubleTapOn:
+    id: submit
+    delay: 100
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- doubleTapOn: Save
+- swipe:
+    start: 80%,70%
+    end: 90%,50%
+  
+# - swipe:
+#     from:
+#       id: package-save
+#     direction: UP
+# - swipe:
+#     start: 80%,70%
+#     end: 80%,30%
+- doubleTapOn:
+    id: submit
+    delay: 100
+- doubleTapOn:
+    id: intercom-messenger-frame
+    delay: 100
+- tapOn:
+    text: Services
+    index: 1
