@@ -9,6 +9,7 @@ url: https://testing.agencyhandy.com/
       visible: "Sign In"
     file: Login.yaml
 - tapOn: "Services"
+#create service with vat
 - tapOn:
     id: CREATE_NEW_SERVICE
     index: 1
@@ -78,11 +79,78 @@ url: https://testing.agencyhandy.com/
 - tapOn:
     text: Services
     index: 1
-- doubleTapOn:
-    point: 40%,64%
-- tapOn: Delete
+# - doubleTapOn:
+#     point: 40%,64%
+# - tapOn: Delete
+# - tapOn:
+#     text: Delete
+#     index: 1
+
+
+#create service vat inclusive
 - tapOn:
-    text: Delete
+    id: CREATE_NEW_SERVICE
+    index: 1
+- tapOn: Subscription Service
+- tapOn: Service Details
+- doubleTapOn:
+    id: "service-name"
+- inputText: "Service inclusive-${Date.now()}"
+- scrollUntilVisible:
+    element:
+      text: "Service Description*"
+- doubleTapOn:
+    point: 33%,61%
+- inputText: "test"
+#Tax
+- swipe:
+    from:
+      text: + Tax Rates
+    direction: UP
+- tapOn:
+    id: Open
+- tapOn: "Home"
+- tapOn:
+    id: Open
+    index: 1
+- tapOn: "US Dollar ($)"
+- scrollUntilVisible:
+    element:
+      text: "Package Details"
+- tapOn: + New Package
+- tapOn:
+    id: "packageName"
+- inputText: "Basic"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: + Add
+- inputText: "new included"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: "1"
+- inputText: "200"
+- tapOn: "0"
+- inputText: "3"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: + Setup Fee
+- tapOn: "0"
+- inputText: "3"
+- tapOn: "0"
+- inputText: "2"
+- tapOn: Save
+- tapOn:
+    text: Create Service
+    index: 1
+- scrollUntilVisible:
+    element:
+      text: "Skip"
+- tapOn: Skip
+- tapOn:
+    text: Services
     index: 1
 
 

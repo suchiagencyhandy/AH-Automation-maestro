@@ -1,0 +1,87 @@
+url: https://testing.agencyhandy.com/
+---
+- launchApp
+- launchApp:
+    clearState: true
+
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: Login.yaml
+- tapOn: "Services"
+#create service without vat 
+- tapOn:
+    id: CREATE_NEW_SERVICE
+    index: 1
+- tapOn: Subscription Service
+- tapOn: Service Details
+- doubleTapOn:
+    id: "service-name"
+- inputText: "Service noVat-${Date.now()}"
+- scrollUntilVisible:
+    element:
+      text: "Service Description*"
+- doubleTapOn:
+    point: 33%,61%
+- inputText: "test"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn:
+    id: Open
+    index: 1
+- tapOn: "US Dollar ($)"
+- scrollUntilVisible:
+    element:
+      text: "Package Details"
+- tapOn: + New Package
+- tapOn:
+    id: "packageName"
+- inputText: "Basic"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: + Add
+- inputText: "new included"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: "1"
+- inputText: "200"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: "0"
+- inputText: "2"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+
+- tapOn:
+    id: toggle-defaultTask
+- tapOn:
+    id: task-name-input
+    index: 1
+- inputText: "subscription service Task"
+
+- tapOn: Create
+
+- tapOn: + Setup Fee
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+
+- tapOn:
+    id: setupFeeAmount
+- inputText: "10"
+- tapOn: Save
+- tapOn:
+    text: Create Service
+    index: 1
+- scrollUntilVisible:
+    element:
+      text: "Skip"
+- tapOn: Skip
+- tapOn:
+    text: Services
+    index: 1
