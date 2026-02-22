@@ -1,0 +1,6 @@
+url: https://testing.agencyhandy.com/
+---
+- launchApp
+- tapOn:
+    id: user-seetings-avatar
+- tapOn: Logout

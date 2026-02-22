@@ -1,0 +1,39 @@
+url: https://testing.agencyhandy.com/
+---
+- launchApp
+- launchApp:
+    clearState: true
+
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: Login.yaml
+- tapOn:
+    id: service-sidebar-item-toggle
+- tapOn: Coupons
+- tapOn: Create Coupon
+- tapOn: Enter Coupon Name
+- inputText: "Coupon-${Date.now()}"
+- tapOn: Add Services
+- tapOn: Service noVat-1771491178973
+- tapOn: Add
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- doubleTapOn:
+    id: ":r1n:"
+    delay: 100
+- inputText: "10"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- scrollUntilVisible:
+    element:
+      id: ":r1k:"
+
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn:
+    id: ":r1u:"
+

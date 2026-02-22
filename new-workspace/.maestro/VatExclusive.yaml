@@ -1,0 +1,104 @@
+url: https://testing.agencyhandy.com/
+---
+- launchApp
+- launchApp:
+    clearState: true
+
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: ClientLogin.yaml
+
+- scrollUntilVisible:
+    element:
+      text: Service-1771487444651
+
+- tapOn: Service-1771487444651
+- tapOn: Purchase Now
+- swipe:
+         start: 80%,70%
+         end: 80%,30%
+- tapOn: Purchase Now
+# -------- CHECK ADDRESS EXISTS OR NOT --------
+
+- swipe:
+         start: 80%,70%
+         end: 80%,30%
+- runFlow:
+    when:
+      visible: "Select Country"
+    commands:
+
+      # Country dropdown
+      - tapOn: "Select Country"
+      # - tapOn:
+      #    id: Open
+      - inputText: "Bangladesh"
+      
+      
+
+      # State
+      - tapOn: "State"
+      - inputText: "Dhaka"
+
+      # City
+      - tapOn: "Enter your City"
+      - inputText: "Uttara"
+
+      # Zip
+      - tapOn: "Enter your Zip"
+      - inputText: "1230"
+
+      # Street address
+      - tapOn: "Add Street Address"
+      - inputText: "House 12, Road 5, Uttara"
+
+# -------- CONTINUE PURCHASE --------
+
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: Continue
+- tapOn: Bank Payment
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: Pay Now
+
+#subscription service purchase
+- tapOn: "Services"
+- scrollUntilVisible:
+    element:
+      text: "Subscription "
+    direction: DOWN
+   
+- tapOn: "Subscription "
+    
+
+
+- tapOn: Purchase Now
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: Purchase Now
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: Bank Payment
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: Pay Now
+
