@@ -1,5 +1,6 @@
 url: https://testing.agencyhandy.com/
 ---
+- evalScript: ${output.serviceName="Service noVat" +Date.now()}
 - launchApp
 - launchApp:
     clearState: true
@@ -17,7 +18,7 @@ url: https://testing.agencyhandy.com/
 - tapOn: Service Details
 - doubleTapOn:
     id: "service-name"
-- inputText: "Service noVat-${Date.now()}"
+- inputText: ${output.serviceName}
 - scrollUntilVisible:
     element:
       text: "Service Description*"
@@ -85,3 +86,5 @@ url: https://testing.agencyhandy.com/
 - tapOn:
     text: Services
     index: 1
+# ✅ VERIFY CREATED DATA EXISTS
+- assertVisible: ${output.serviceName}

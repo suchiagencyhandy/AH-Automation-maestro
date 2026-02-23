@@ -1,0 +1,23 @@
+url: https://testing.agencyhandy.com/
+---
+- launchApp
+- launchApp:
+    clearState: true
+
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: Login.yaml
+- swipe:
+    from:
+      text: Clients
+    direction: UP
+- swipe:
+    start: 10%,75%
+    end: 10%,35%
+- swipe:
+    start: 10%,75%
+    end: 10%,35%
+- swipe:
+    start: 10%,75%
+    end: 10%,35%

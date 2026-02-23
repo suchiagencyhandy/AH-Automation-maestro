@@ -1,0 +1,64 @@
+url: https://testing.agencyhandy.com/
+---
+
+- evalScript: ${output.addonName = "Add-On" + Date.now()}
+
+- launchApp
+- launchApp:
+    clearState: true
+
+# login if needed
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: Login.yaml
+
+# navigate
+- tapOn:
+    id: "service-sidebar-item-toggle"
+
+- tapOn: "Add-ons"
+- tapOn: "Create Add-ons"
+
+# input addon name
+- tapOn:
+    id: "add-on-name-input"
+    index: 1
+
+- inputText: ${output.addonName}
+
+# description
+- doubleTapOn:
+    point: 31%,66%
+
+- inputText: "Test add-on"
+
+# scroll modal
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+
+# price
+- tapOn:
+    id: "add-on-price-input"
+    index: 1
+
+- inputText: "100"
+
+# currency
+- tapOn:
+    id: "Open"
+
+- tapOn: "US Dollar ($)"
+
+# create addon
+- tapOn: "Create"
+
+
+
+# ✅ VERIFY CREATED DATA EXISTS
+- assertVisible: ${output.addonName}

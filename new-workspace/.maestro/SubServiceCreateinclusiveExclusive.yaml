@@ -1,5 +1,7 @@
 url: https://testing.agencyhandy.com/
 ---
+- evalScript: ${output.serviceName="Service-" +Date.now()}
+- evalScript: ${output.serviceInclusiveName="Service inclusive-" +Date.now()}
 - launchApp
 - launchApp:
     clearState: true
@@ -17,7 +19,7 @@ url: https://testing.agencyhandy.com/
 - tapOn: Service Details
 - doubleTapOn:
     id: "service-name"
-- inputText: "Service-${Date.now()}"
+- inputText: ${output.serviceName}
 - scrollUntilVisible:
     element:
       text: "Service Description*"
@@ -35,8 +37,6 @@ url: https://testing.agencyhandy.com/
 #Exclusive vat
 - tapOn: inclusive
 
-
-
 - tapOn:
     id: Open
     index: 1
@@ -79,13 +79,13 @@ url: https://testing.agencyhandy.com/
 - tapOn:
     text: Services
     index: 1
+- assertVisible: ${output.serviceName}
 # - doubleTapOn:
 #     point: 40%,64%
 # - tapOn: Delete
 # - tapOn:
 #     text: Delete
 #     index: 1
-
 
 #create service vat inclusive
 - tapOn:
@@ -95,7 +95,7 @@ url: https://testing.agencyhandy.com/
 - tapOn: Service Details
 - doubleTapOn:
     id: "service-name"
-- inputText: "Service inclusive-${Date.now()}"
+- inputText: ${output.serviceInclusiveName}
 - scrollUntilVisible:
     element:
       text: "Service Description*"
@@ -152,5 +152,4 @@ url: https://testing.agencyhandy.com/
 - tapOn:
     text: Services
     index: 1
-
-
+- assertVisible: ${output.serviceInclusiveName}
