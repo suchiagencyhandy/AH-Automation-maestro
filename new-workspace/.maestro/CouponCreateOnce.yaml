@@ -1,0 +1,57 @@
+url: https://testing.agencyhandy.com/
+---
+#coupon name
+- evalScript: ${output.rand = String(Date.now()%100).padStart(2,'0')}
+- evalScript: ${output.coupon = "coupon once" + output.rand}
+#coupon code
+- evalScript: ${output.rand = String(Date.now()%100).padStart(2,'0')}
+- evalScript: ${output.code = "coupon" + output.rand}
+
+
+- launchApp:
+    clearState: true
+
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: Login.yaml
+- tapOn:
+    id: service-sidebar-item-toggle
+
+- tapOn: Coupons
+- tapOn: Create Coupon
+- tapOn: Enter Coupon Name
+- inputText: ${output.coupon}
+- tapOn: Add Services
+- tapOn:
+    id: coupon-service-list-search-input
+- inputText: "Subscription Upsell"
+- tapOn:
+    text: Subscription Upsell
+    index: 1
+- tapOn: Add
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn:
+    id: coupon-discount-amount-input
+- inputText: "10"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: Once
+- tapOn:
+    id: ":r1q:"
+- inputText: ${output.code}
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn:
+    id: coupon-create-button
+- assertVisible: ${output.coupon}

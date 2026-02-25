@@ -1,0 +1,73 @@
+url: https://testing.agencyhandy.com/
+---
+#coupon name
+- evalScript: ${output.rand = String(Date.now()%100).padStart(2,'0')}
+- evalScript: ${output.coupon = "coupon s Client" + output.rand}
+#coupon code
+- evalScript: ${output.rand = String(Date.now()%100).padStart(2,'0')}
+- evalScript: ${output.code = "coupon" + output.rand}
+
+
+- launchApp:
+    clearState: true
+
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: Login.yaml
+- tapOn:
+    id: service-sidebar-item-toggle
+
+- tapOn: Coupons
+- tapOn: Create Coupon
+- tapOn: Enter Coupon Name
+- inputText: ${output.coupon}
+- tapOn: Add Services
+- tapOn:
+    id: coupon-service-list-search-input
+- inputText: "Service-1771342157724"
+- tapOn:
+    text: Service-1771342157724
+    index: 1
+- tapOn: Add
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn:
+    id: coupon-discount-amount-input
+- inputText: "10"
+- tapOn:
+    id: coupon-total-redeems-input
+    index: 1
+- inputText: "100"  
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: Multiple Cycles
+- tapOn:
+    id: ":r1t:"
+- pressKey: Backspace
+- inputText: "2"
+- tapOn:
+    id: ":r1q:"
+- inputText: ${output.code}
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: Limit To Specific Clients
+- tapOn:
+    id: Open
+- inputText: R biva 
+- tapOn: (suchi.sheba@gmail.com)
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn:
+    id: coupon-create-button
+- assertVisible: ${output.coupon}

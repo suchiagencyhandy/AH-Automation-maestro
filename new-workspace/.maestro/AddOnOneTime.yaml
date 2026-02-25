@@ -1,9 +1,7 @@
 url: https://testing.agencyhandy.com/
 ---
-
 - evalScript: ${output.addonName = "Add-On" + Date.now()}
 
-- launchApp
 - launchApp:
     clearState: true
 
@@ -57,8 +55,6 @@ url: https://testing.agencyhandy.com/
 
 # create addon
 - tapOn: "Create"
-
-
 
 # ✅ VERIFY CREATED DATA EXISTS
 - assertVisible: ${output.addonName}

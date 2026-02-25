@@ -1,6 +1,5 @@
 url: https://testing.agencyhandy.com/
 ---
-
 - launchApp
 - launchApp:
     clearState: true
@@ -17,26 +16,23 @@ url: https://testing.agencyhandy.com/
 - tapOn: Service inclusive-1771487569551
 - tapOn: Purchase Now
 - swipe:
-         start: 80%,70%
-         end: 80%,30%
+    start: 80%,70%
+    end: 80%,30%
 - tapOn: Purchase Now
 # -------- CHECK ADDRESS EXISTS OR NOT --------
 
 - swipe:
-         start: 80%,70%
-         end: 80%,30%
+    start: 80%,70%
+    end: 80%,30%
 - runFlow:
     when:
       visible: "Select Country"
     commands:
-
       # Country dropdown
       - tapOn: "Select Country"
       # - tapOn:
       #    id: Open
       - inputText: "Bangladesh"
-      
-      
 
       # State
       - tapOn: "State"
@@ -78,10 +74,8 @@ url: https://testing.agencyhandy.com/
     element:
       text: "Subscription "
     direction: DOWN
-   
-- tapOn: "Subscription "
-    
 
+- tapOn: "Subscription "
 
 - tapOn: Purchase Now
 - swipe:
@@ -102,4 +96,3 @@ url: https://testing.agencyhandy.com/
     start: 80%,70%
     end: 80%,30%
 - tapOn: Pay Now
-
