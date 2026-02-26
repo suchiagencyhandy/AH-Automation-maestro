@@ -1,0 +1,141 @@
+url: https://testing.agencyhandy.com/
+---
+# last random name
+- evalScript: ${output.rand = String(Date.now()%100).padStart(2,'0')}
+- evalScript: ${output.name = "Sultana" + output.rand}
+# random mail
+- evalScript: ${output.oneDigit = String(Date.now()%100).padStart(2,'0')}
+- evalScript: ${output.randomEmail = "suchi.agencyhandy+" + output.oneDigit + "@gmail.com"}
+# random phone no
+- evalScript: ${output.elevenDigit = String(Date.now()%100).padStart(8,'0')}
+- evalScript: ${output.phone = "+88017" + output.elevenDigit}
+# random company name
+- evalScript: ${output.rand = String(Date.now()%100).padStart(2,'0')}
+- evalScript: ${output.compnayName = "Company" + output.rand}
+- launchApp:
+    clearState: true
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: Login.yaml
+- tapOn: Clients
+- tapOn: Create Client
+- tapOn:
+    id: client-firstName
+    index: 1
+- inputText: "Jannat"
+- tapOn: Enter Last Name
+- inputText: ${output.name}
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn:
+    id: client-email
+    index: 1
+- inputText: ${output.randomEmail}
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn:
+    id: contactNo
+    index: 1
+- inputText: ${output.phone}
+- tapOn:
+    id: website
+    index: 1
+- inputText: "https://www.nasa.gov/"
+- tapOn:
+    id: companyName
+    index: 1
+- inputText: ${output.compnayName}
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn:
+    id: client-category
+    index: 1
+- tapOn:
+    id: client-category-option-0
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn: "Select Country"
+- inputText: "Bangladesh"
+- tapOn:
+    text: "Bangladesh"
+    index:
+      1
+      # State
+- tapOn: "State"
+- inputText:
+    "Dhaka"
+
+    # City
+- tapOn:
+    id: client-city
+    index: 1
+- inputText: "Uttara"
+
+#       # Zip
+- tapOn:
+    id: client-zipCode
+    index: 1
+- inputText: "1230"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+#       # Street address
+- tapOn: "Add Street Address"
+- inputText: "House 12, Road 5, Uttara"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn:
+    id: password
+    index: 1
+- inputText: "Admin@1234"
+- swipe:
+    start: 80%,70%
+    end: 80%,30%
+- tapOn:
+    id: client-sendMail
+- tapOn:
+    id: client-submit-button
+- assertVisible: ${output.randomEmail}
+- swipe:
+    start: 95%,50%
+    end: 5%,50%
+- swipe:
+    start: 95%,50%
+    end: 5%,50%
+#Edit
+- tapOn:
+    id: action-column
+    index: 1
+- tapOn:
+    id: edit-client
+
+- swipe:
+    start: 50%,80%
+    end: 50%,20%
+    duration: 1200
+- swipe:
+    start: 50%,80%
+    end: 50%,20%
+    duration: 1200
+
+- tapOn:
+    id: Open
+- tapOn:
+    id: agent-option-0
+- tapOn:
+    id: client-submit-button
+
+#delete
+- tapOn:
+    id: action-column
+    index: 1
+- tapOn:
+    id: delete-client
+- tapOn:
+    id: confirm-delete-client

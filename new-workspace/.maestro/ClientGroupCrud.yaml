@@ -1,0 +1,39 @@
+url: https://testing.agencyhandy.com/
+---
+# last random name
+- evalScript: ${output.rand = String(Date.now()%100).padStart(2,'0')}
+- evalScript: ${output.GrpName = "Group" + output.rand}
+- launchApp:
+    clearState: true
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: Login.yaml
+- tapOn: Clients
+- tapOn: Configuration
+- tapOn:
+    id: client-configuration-{{modulename}}-groups
+- tapOn: Create Client Group
+- tapOn:
+    id: name
+    index: 1
+- inputText: ${output.GrpName}
+- tapOn:
+    id: Open
+- tapOn:
+    id: clients-option-2
+- tapOn:
+    id: Open
+- tapOn:
+    id: clients-option-3
+- tapOn:
+    id: submit
+- assertVisible: ${output.GrpName}
+
+#id missing action
+- tapOn:
+    point: 95%,44%
+- tapOn:
+    point: 94%,44%
+- tapOn:
+    id: edit-client-group

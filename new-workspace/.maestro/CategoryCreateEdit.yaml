@@ -1,0 +1,36 @@
+url: https://testing.agencyhandy.com/
+---
+# last random name
+- evalScript: ${output.rand = String(Date.now()%100).padStart(2,'0')}
+- evalScript: ${output.Catname = "Category" + output.rand}
+- launchApp:
+    clearState: true
+- runFlow:
+    when:
+      visible: "Sign In"
+    file: Login.yaml
+- tapOn: Clients
+- tapOn: Configuration
+#create catagory
+- tapOn:
+    id: create-client-category
+- tapOn:
+    id: name
+    index: 1
+- inputText: ${output.Catname}
+- tapOn:
+    id: submit
+- assertVisible: ${output.Catname}
+#3 dot action missing id
+
+#Update
+- tapOn:
+    point: 94%,53%
+- tapOn:
+    id: edit-client-category
+- tapOn:
+    id: description
+    index: 2
+- inputText: "Category description"
+- tapOn:
+    id: submit
