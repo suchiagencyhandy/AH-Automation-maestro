@@ -19,13 +19,15 @@ url: https://testing.agencyhandy.com/
     index: 1
 - inputText: ${output.Catname}
 - tapOn:
+    id: client-category-color-option-3
+- tapOn:
     id: submit
 - assertVisible: ${output.Catname}
 #3 dot action missing id
 
 #Update
 - tapOn:
-    point: 94%,53%
+    id: client-category-action-menu-0
 - tapOn:
     id: edit-client-category
 - tapOn:
@@ -33,11 +35,12 @@ url: https://testing.agencyhandy.com/
     index: 2
 - inputText: "Category description"
 - tapOn:
+    id: client-category-color-option-2
+- tapOn:
     id: submit
 #delete
 - tapOn:
-    point: 94%,53%
+    id: client-category-action-menu-0
 - tapOn:
     id: delete-client-category
-- tapOn:
-    id: ":ral:"
+- tapOn: Yes, Delete it

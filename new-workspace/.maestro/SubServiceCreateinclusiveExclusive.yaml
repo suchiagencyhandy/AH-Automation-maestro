@@ -20,6 +20,7 @@ url: https://testing.agencyhandy.com/
 - doubleTapOn:
     id: "service-name"
 - inputText: ${output.serviceName}
+
 - scrollUntilVisible:
     element:
       text: "Service Description*"
@@ -96,6 +97,7 @@ url: https://testing.agencyhandy.com/
 - doubleTapOn:
     id: "service-name"
 - inputText: ${output.serviceInclusiveName}
+
 - scrollUntilVisible:
     element:
       text: "Service Description*"

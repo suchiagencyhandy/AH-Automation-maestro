@@ -7,7 +7,6 @@ url: https://testing.agencyhandy.com/
 - evalScript: ${output.rand = String(Date.now()%100).padStart(2,'0')}
 - evalScript: ${output.code = "coupon" + output.rand}
 
-
 - launchApp:
     clearState: true
 
@@ -24,12 +23,9 @@ url: https://testing.agencyhandy.com/
 - inputText: ${output.coupon}
 - tapOn: Add Services
 - tapOn:
-    id: coupon-service-list-search-input
-- inputText: "One Time Service"
+    id: service-id-1
 - tapOn:
-    text: One Time Service
-    index: 1
-- tapOn: Add
+    id: coupon-service-list-add-button
 - swipe:
     start: 80%,70%
     end: 80%,30%
